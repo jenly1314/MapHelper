@@ -37,7 +37,6 @@ MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地�
 ```
 ### Gradle:
 ```gradle
-//AndroidX
 implementation 'com.king.map:maphelper:1.0.0'
 ```
 

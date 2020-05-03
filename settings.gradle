@@ -1,0 +1,3 @@
+rootProject.name='MapHelper'
+include ':app'
+include ':maphelper'

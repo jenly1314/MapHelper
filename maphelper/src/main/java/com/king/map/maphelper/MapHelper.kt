@@ -178,11 +178,11 @@ object MapHelper {
     /**
      * 根据App包名判断是否安装App
      * @param context
-     * @param packageName 需要检测的App包名，目前定义了如下地图App包名
-     *      AMAP_PACKAGE_NAME            高德地图App包名
-     *      BAIDU_MAP_PACKAGE_NAME      百度地图App包名
-     *      TENCENT_MAP_PACKAGE_NAME    腾讯地图App包名
-     *      GOOGLE_MAP_PACKAGE_NAME     谷歌地图App包名
+     * @param packageName 需要检测的App包名，目前定义了一些主流地图App包名
+     * -           [AMAP_PACKAGE_NAME]            高德地图App包名
+     * -           [BAIDU_MAP_PACKAGE_NAME]       百度地图App包名
+     * -           [TENCENT_MAP_PACKAGE_NAME]     腾讯地图App包名
+     * -           [GOOGLE_MAP_PACKAGE_NAME]      谷歌地图App包名
      */
     fun isInstalled(context: Context, packageName: String): Boolean {
         val manager = context.packageManager
@@ -201,12 +201,12 @@ object MapHelper {
      * @param context
      * @param toLatitude 终点纬度，请使用GCJ-02坐标系
      * @param toLongitude 终点经度，请使用GCJ-02坐标系
-     * @param mapType 地图类型，默认为：MapType.UNSPECIFIED_MAP_TYPE。当 mapType为 MapType.UNSPECIFIED_MAP_TYPE时（跳转到已安装地图App，优先级顺序为：高德、百度、腾讯、谷歌地图）
-     *      MapType.UNSPECIFIED_MAP_TYPE    不指定地图类型
-     *      MapType.AMAP_TYPE               高德地图类型
-     *      MapType.BAIDU_MAP_TYPE          百度地图类型
-     *      MapType.TENCENT_MAP_TYPE        腾讯地图类型
-     *      MapType.GOOGLE_MAP_TYPE         谷歌地图类型
+     * @param mapType 地图类型，默认为：[MapType.UNSPECIFIED_MAP_TYPE]。当 mapType为 [MapType.UNSPECIFIED_MAP_TYPE]时（跳转到已安装地图App，优先级顺序为：高德、百度、腾讯、谷歌地图）
+     * -           [MapType.UNSPECIFIED_MAP_TYPE]    不指定地图类型
+     * -           [MapType.AMAP_TYPE]               高德地图类型
+     * -           [MapType.BAIDU_MAP_TYPE]           百度地图类型
+     * -           [MapType.TENCENT_MAP_TYPE]         腾讯地图类型
+     * -           [MapType.GOOGLE_MAP_TYPE]          谷歌地图类型
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @return 返回true表示满足条件并执行了跳转操作（跳转到相关地图App或跳转到应用市场对应App详情）
      */
@@ -254,7 +254,7 @@ object MapHelper {
 
     /**
      * 跳转到高德地图
-     * 参见 <a href="https://lbs.amap.com/api/amap-mobile/guide/android/navigation">导航</a>
+     * @see <a href="https://lbs.amap.com/api/amap-mobile/guide/android/navigation">导航</a>
      *
      * @param context
      * @param toLatitude 终点纬度
@@ -275,7 +275,7 @@ object MapHelper {
 
     /**
      * 跳转到高德地图导航
-     * 参见 <a href="https://lbs.amap.com/api/amap-mobile/guide/android/navigation">导航</a>
+     * @see <a href="https://lbs.amap.com/api/amap-mobile/guide/android/navigation">导航</a>
      *
      * @param context
      * @param toLatitude 终点纬度
@@ -293,17 +293,17 @@ object MapHelper {
 
     /**
      * 跳转到高德地图路线规划
-     * 参见 <a href="https://lbs.amap.com/api/amap-mobile/guide/android/route">路径规划</a>
+     * @see <a href="https://lbs.amap.com/api/amap-mobile/guide/android/route">路径规划</a>
      *
      * @param context
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
      * @param isWGS84  为true表示使用GPS原始坐标系：wgs84，为false表示使用火星坐标系：gcj02
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
      * @param source 第三方调用应用名称。默认为：amap
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
@@ -314,7 +314,7 @@ object MapHelper {
 
     /**
      * 跳转到高德地图路线规划
-     * 参见 <a href="https://lbs.amap.com/api/amap-mobile/guide/android/route">路径规划</a>
+     * @see <a href="https://lbs.amap.com/api/amap-mobile/guide/android/route">路径规划</a>
      *
      * @param context
      * @param fromLatitude 起点纬度，为空表示当前位置
@@ -322,11 +322,11 @@ object MapHelper {
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
      * @param isWGS84  为true表示使用GPS原始坐标系：wgs84，为false表示使用火星坐标系：gcj02
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
      * @param source 第三方调用应用名称。默认为：amap
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
@@ -352,11 +352,11 @@ object MapHelper {
      * @param context
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param coordinateType 坐标类型 默认为：CoordinateType.GCJ02
-     *           CoordinateType.GCJ02   经国测局加密后的坐标系（火星坐标系）
-     *           CoordinateType.WGS84   GPS原始坐标系
-     *           CoordinateType.BD09LL  百度经纬度坐标系
-     *           CoordinateType.BD09MC  百度墨卡托坐标系
+     * @param coordinateType 坐标类型 默认为：[CoordinateType.GCJ02]
+     * -          [CoordinateType.GCJ02]   经国测局加密后的坐标系（火星坐标系）
+     * -          [CoordinateType.WGS84]   GPS原始坐标系
+     * -          [CoordinateType.BD09LL]  百度经纬度坐标系
+     * -          [CoordinateType.BD09MC]  百度墨卡托坐标系
      * @param source 统计来源，默认取当前APK包名
      * @param isRoute 为true表示跳转到地图路线规划，为false表示跳转到导航
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
@@ -373,16 +373,16 @@ object MapHelper {
 
     /**
      * 跳转到百度地图导航
-     * 参见 <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
+     * @see <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
      *
      * @param context
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param coordinateType 坐标类型 默认为：CoordinateType.GCJ02
-     *           CoordinateType.GCJ02   经国测局加密后的坐标系（火星坐标系）
-     *           CoordinateType.WGS84   GPS原始坐标系
-     *           CoordinateType.BD09LL  百度经纬度坐标系
-     *           CoordinateType.BD09MC  百度墨卡托坐标系
+     * @param coordinateType 坐标类型 默认为：[CoordinateType.GCJ02]
+     * -          [CoordinateType.GCJ02]   经国测局加密后的坐标系（火星坐标系）
+     * -          [CoordinateType.WGS84]   GPS原始坐标系
+     * -          [CoordinateType.BD09LL]  百度经纬度坐标系
+     * -          [CoordinateType.BD09MC]  百度墨卡托坐标系
      * @param source 统计来源，默认取当前APK包名
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
@@ -394,21 +394,21 @@ object MapHelper {
 
     /**
      * 跳转到百度地图路线规划
-     * 参见 <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
+     * @see <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
      *
      * @param context
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param coordinateType 坐标类型 默认为：CoordinateType.GCJ02
-     *           CoordinateType.GCJ02   经国测局加密后的坐标系（火星坐标系）
-     *           CoordinateType.WGS84   GPS原始坐标系
-     *           CoordinateType.BD09LL  百度经纬度坐标系
-     *           CoordinateType.BD09MC  百度墨卡托坐标系
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
+     * @param coordinateType 坐标类型 默认为：[CoordinateType.GCJ02]
+     * -          [CoordinateType.GCJ02]   经国测局加密后的坐标系（火星坐标系）
+     * -          [CoordinateType.WGS84]   GPS原始坐标系
+     * -          [CoordinateType.BD09LL]  百度经纬度坐标系
+     * -          [CoordinateType.BD09MC]  百度墨卡托坐标系
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
      * @param source 统计来源，默认取当前APK包名
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
@@ -419,23 +419,23 @@ object MapHelper {
 
     /**
      * 跳转到百度地图路线规划
-     * 参见 <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
+     * @see <a href="http://lbsyun.baidu.com/index.php?title=uri/api/android">android</a>
      *
      * @param context
      * @param fromLatitude 起点纬度，为空表示当前位置
      * @param fromLongitude 起点经度，为空表示当前位置
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param coordinateType 坐标类型 默认为：CoordinateType.GCJ02
-     *           CoordinateType.GCJ02   经国测局加密后的坐标系（火星坐标系）
-     *           CoordinateType.WGS84   GPS原始坐标系
-     *           CoordinateType.BD09LL  百度经纬度坐标系
-     *           CoordinateType.BD09MC  百度墨卡托坐标系
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
+     * @param coordinateType 坐标类型 默认为：[CoordinateType.GCJ02]
+     * -          [CoordinateType.GCJ02]   经国测局加密后的坐标系（火星坐标系）
+     * -          [CoordinateType.WGS84]   GPS原始坐标系
+     * -          [CoordinateType.BD09LL]  百度经纬度坐标系
+     * -          [CoordinateType.BD09MC]  百度墨卡托坐标系
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
      * @param source 统计来源，默认取当前APK包名
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
@@ -466,12 +466,12 @@ object MapHelper {
     //---------------------------------------------
     /**
      * 跳转到腾讯地图线路规划
-     * 参见 <a href="https://lbs.qq.com/webApi/uriV1/uriGuide/uriMobileRoute">android</a>
+     * @see <a href="https://lbs.qq.com/webApi/uriV1/uriGuide/uriMobileRoute">android</a>
      *
      * @param context
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param referer 腾讯地图开发者申请的AppKey
+     * @param referer 腾讯地图开发者申请的AppKey，默认为 [DEFAULT_REFERER]
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
      */
@@ -481,19 +481,19 @@ object MapHelper {
 
     /**
      * 跳转到腾讯地图线路规划
-     * 参见 <a href="https://lbs.qq.com/webApi/uriV1/uriGuide/uriMobileRoute">android</a>
+     * @see <a href="https://lbs.qq.com/webApi/uriV1/uriGuide/uriMobileRoute">android</a>
      *
      * @param context
      * @param fromLatitude 起点纬度，为空表示当前位置
      * @param fromLongitude 起点经度，为空表示当前位置
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
-     * @param referer 腾讯地图开发者申请的AppKey，默认为 DEFAULT_REFERER
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
+     * @param referer 腾讯地图开发者申请的AppKey，默认为 [DEFAULT_REFERER]
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
      */
@@ -521,7 +521,8 @@ object MapHelper {
     }
 
     /**
-     * 设置腾讯地图默认的AppKey
+     * 设置腾讯地图默认使用的AppKey
+     * @param referer 腾讯地图开发者申请的AppKey
      */
     fun setTencentMapDefaultReferer(referer: String){
         DEFAULT_REFERER = referer
@@ -531,7 +532,7 @@ object MapHelper {
 
     /**
      * 跳转到谷歌地图导航
-     * 参见 <a href="https://developers.google.cn/maps/documentation/urls/android-intents">android</a>
+     * @see <a href="https://developers.google.cn/maps/documentation/urls/android-intents">android</a>
      *
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
@@ -544,15 +545,15 @@ object MapHelper {
 
     /**
      * 跳转到谷歌地图导航
-     * 参见 <a href="https://developers.google.cn/maps/documentation/urls/android-intents">android</a>
+     * @see <a href="https://developers.google.cn/maps/documentation/urls/android-intents">android</a>
      *
      * @param toLatitude 终点纬度
      * @param toLongitude 终点经度
-     * @param mode 出行模式 默认为：TripMode.DRIVING_MODE
-     *           TripMode.DRIVING_MODE   驾车模式
-     *           TripMode.TRANSIT_MODE   公交模式
-     *           TripMode.WALKING_MODE   步行模式
-     *           TripMode.RIDING_MODE    骑行模式
+     * @param mode 出行模式 默认为：[TripMode.DRIVING_MODE]
+     * -          [TripMode.DRIVING_MODE]   驾车模式
+     * -          [TripMode.TRANSIT_MODE]   公交模式
+     * -          [TripMode.WALKING_MODE]   步行模式
+     * -          [TripMode.RIDING_MODE]    骑行模式
      * @param isMarket 当检测到未安装目标App时，是否跳转到应用市场，默认为fasle，表示不跳转
      * @param marketPackage 当跳转到应用市场时，指定具体的应用市场包名。如：华为，小米，应用宝等各大应用市场，默认为空，表示不指定
      */
@@ -629,7 +630,7 @@ object MapHelper {
     //---------------------------------------------
 
     /**
-     * 圆周率π {@link Math#PI}
+     * 圆周率π  [Math.PI]
      */
     private const val PI = 3.14159265358979323846
 
@@ -653,7 +654,7 @@ object MapHelper {
      * 即 百度 转 谷歌、高德
      * @param lat 纬度
      * @param lng 经度
-     * @return {@link LatLng}
+     * @return [LatLng]
      */
     fun bd09llToGCJ02(lat: Double,lng: Double): LatLng {
         var x = lng - 0.0065
@@ -670,7 +671,7 @@ object MapHelper {
      * 即谷歌、高德 转 百度
      * @param lat 纬度
      * @param lng 经度
-     * @return {@link LatLng}
+     * @return [LatLng]
      */
     fun gcj02ToBD09LL(lat: Double,lng: Double): LatLng {
         var z = sqrt(lng * lng + lat * lat) + 0.00002 * sin(lat * X_PI)
@@ -684,7 +685,7 @@ object MapHelper {
      * WGS-84转 GCJ-02
      * @param lat 纬度
      * @param lng 经度
-     * @return {@link LatLng}
+     * @return [LatLng]
      */
     fun wgs84ToGCJ02(lat: Double,lng: Double): LatLng {
         if (outOfChina(lat,lng)) {
@@ -707,7 +708,7 @@ object MapHelper {
      * GCJ-02 转换为 WGS-84
      * @param lat 纬度
      * @param lng 经度
-     * @return {@link LatLng}
+     * @return [LatLng]
      */
     fun gcj02ToWGS84(lat: Double,lng: Double): LatLng {
         if (outOfChina(lat,lng)) {

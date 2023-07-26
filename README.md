@@ -20,7 +20,6 @@ MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地�
 - [x] 地图路线规划/导航
 - [x] **GCJ-02** / **WGS-84** / **BD09LL** 等相关坐标系互转
 
-
 ## Gif 展示
 ![Image](GIF.gif)
 
@@ -41,7 +40,7 @@ allprojects {
 
 2. 在Module的 **build.gradle** 里面添加引入依赖项
 ```gradle
-implementation 'com.github.jenly1314:maphelper:1.1.0'
+implementation 'com.github.jenly1314:maphelper:1.2.0'
 
 ```
 
@@ -50,26 +49,31 @@ implementation 'com.github.jenly1314:maphelper:1.1.0'
 ### 代码示例
 
 ```kotlin
-    //调用相关地图线路/导航示例（params表示一些具体参数）
+    // 调用相关地图线路/导航示例（params表示一些具体参数）
 
-    //跳转到地图（高德、百度、腾讯、谷歌地图等）
+    // 跳转到地图（高德、百度、腾讯、谷歌地图等）
     MapHelper.gotoMap(params)
-    //跳转到高德地图
+    // 跳转到高德地图
     MapHelper.gotoAMap(params)
-    //跳转到百度地图
+    // 跳转到百度地图
     MapHelper.gotoBaiduMap(params)
-    //跳转腾讯地图
+    // 跳转腾讯地图
     MapHelper.gotoTencentMap(params)
-    //跳转到谷歌地图
+    // 跳转到谷歌地图
     MapHelper.gotoGoogleMap(params)
-    //坐标系转换：WGS-84转GCJ-02(火星坐标系)
-    MapHelper.wgs84ToGCJ02(lat,lng)
+    // 坐标系转换：WGS-84转GCJ-02(火星坐标系)
+    MapHelper.wgs84ToGCJ02(latitude,longitude)
+    // 坐标系转换：GCJ-02(火星坐标系)转WGS-84
+    MapHelper.gcj02ToWGS84(latitude,longitude)
     //...
 ```
 
 更多使用详情，请查看[app](app)中的源码使用示例或直接查看[API帮助文档](https://jenly1314.github.io/projects/MapHelper/doc/)
 
 ## 版本记录
+
+#### v1.2.0：2023-7-26
+*  适配Android 11 (R) 软件包的可见性
 
 #### v1.1.0：2023-3-26
 *  迁移发布至 Maven Central

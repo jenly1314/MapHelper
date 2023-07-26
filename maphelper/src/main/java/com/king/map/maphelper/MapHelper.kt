@@ -900,7 +900,7 @@ object MapHelper {
         marketPackage: String? = null
     ): Boolean {
         try {
-            Log.d(TAG, "Uri:$uri")
+            Log.d(TAG, "Uri: $uri")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.addCategory(Intent.CATEGORY_DEFAULT)
             intent.setPackage(packageName)
@@ -908,8 +908,9 @@ object MapHelper {
                 context.startActivity(intent)
                 return true
             } else {
-                Log.d(TAG, "An App with Identifier '${packageName}' is not available.")
-                if (isMarket) {//是否跳转到应用市场
+                Log.w(TAG, "An App with Identifier '${packageName}' is not available.")
+                if (isMarket) {
+                    // 是否跳转到应用市场
                     return gotoMarket(context, packageName, marketPackage)
                 }
             }
@@ -971,14 +972,14 @@ object MapHelper {
     /**
      * 百度坐标系 (BD-09ll) 与 火星坐标系 (GCJ-02)的转换
      * 即 百度 转 谷歌、高德
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      * @return [LatLng]
      */
     @JvmStatic
-    fun bd09llToGCJ02(lat: Double, lng: Double): LatLng {
-        val x = lng - 0.0065
-        val y = lat - 0.006
+    fun bd09llToGCJ02(latitude: Double, longitude: Double): LatLng {
+        val x = longitude - 0.0065
+        val y = latitude - 0.006
         val z = sqrt(x * x + y * y) - 0.00002 * sin(y * X_PI)
         val theta = atan2(y, x) - 0.000003 * cos(x * X_PI)
         val ggLat = z * sin(theta)
@@ -989,14 +990,14 @@ object MapHelper {
     /**
      * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09LL) 的转换
      * 即谷歌、高德 转 百度
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      * @return [LatLng]
      */
     @JvmStatic
-    fun gcj02ToBD09LL(lat: Double, lng: Double): LatLng {
-        val z = sqrt(lng * lng + lat * lat) + 0.00002 * sin(lat * X_PI)
-        val theta = atan2(lat, lng) + 0.000003 * cos(lng * X_PI)
+    fun gcj02ToBD09LL(latitude: Double, longitude: Double): LatLng {
+        val z = sqrt(longitude * longitude + latitude * latitude) + 0.00002 * sin(latitude * X_PI)
+        val theta = atan2(latitude, longitude) + 0.000003 * cos(longitude * X_PI)
         val bdLat = z * sin(theta) + 0.006
         val bdLng = z * cos(theta) + 0.0065
         return LatLng(bdLat, bdLng)
@@ -1004,92 +1005,91 @@ object MapHelper {
 
     /**
      * WGS-84转 GCJ-02
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      * @return [LatLng]
      */
     @JvmStatic
-    fun wgs84ToGCJ02(lat: Double, lng: Double): LatLng {
-        if (outOfChina(lat, lng)) {
-            return LatLng(lat, lng)
+    fun wgs84ToGCJ02(latitude: Double, longitude: Double): LatLng {
+        if (outOfChina(latitude, longitude)) {
+            return LatLng(latitude, longitude)
         }
-        var dLat = transformLat(lat - 35.0, lng - 105.0)
-        var dLng = transformLng(lat - 35.0, lng - 105.0)
-        val radLat = lat / 180.0 * PI
+        var dLat = transformLat(latitude - 35.0, longitude - 105.0)
+        var dLng = transformLng(latitude - 35.0, longitude - 105.0)
+        val radLat = latitude / 180.0 * PI
         var magic = sin(radLat)
         magic = 1 - EE * magic * magic
         val sqrtMagic = sqrt(magic)
         dLat = (dLat * 180.0) / ((A * (1 - EE)) / (magic * sqrtMagic) * PI)
         dLng = (dLng * 180.0) / (A / sqrtMagic * cos(radLat) * PI)
-        val ggLat = lat + dLat
-        val ggLng = lng + dLng
+        val ggLat = latitude + dLat
+        val ggLng = longitude + dLng
         return LatLng(ggLat, ggLng)
     }
 
     /**
      * GCJ-02 转换为 WGS-84
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      * @return [LatLng]
      */
     @JvmStatic
-    fun gcj02ToWGS84(lat: Double, lng: Double): LatLng {
-        if (outOfChina(lat, lng)) {
-            return LatLng(lat, lng)
+    fun gcj02ToWGS84(latitude: Double, longitude: Double): LatLng {
+        if (outOfChina(latitude, longitude)) {
+            return LatLng(latitude, longitude)
         }
-        var dLat = transformLat(lat - 35.0, lng - 105.0)
-        var dLng = transformLng(lat - 35.0, lng - 105.0)
-        val radLat = lat / 180.0 * PI
+        var dLat = transformLat(latitude - 35.0, longitude - 105.0)
+        var dLng = transformLng(latitude - 35.0, longitude - 105.0)
+        val radLat = latitude / 180.0 * PI
         var magic = sin(radLat)
         magic = 1 - EE * magic * magic
         val sqrtMagic = sqrt(magic)
         dLat = (dLat * 180.0) / ((A * (1 - EE)) / (magic * sqrtMagic) * PI)
         dLng = (dLng * 180.0) / (A / sqrtMagic * cos(radLat) * PI)
-        val ggLat = lat + dLat
-        val ggLng = lng + dLng
-        return LatLng(lat * 2 - ggLat, lng * 2 - ggLng)
+        val ggLat = latitude + dLat
+        val ggLng = longitude + dLng
+        return LatLng(latitude * 2 - ggLat, longitude * 2 - ggLng)
     }
 
     /**
      * 转换坐标纬度
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      *
      */
     @JvmStatic
-    private fun transformLat(lat: Double, lng: Double): Double {
-        var ret =
-            -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + 0.1 * lng * lat + 0.2 * sqrt(abs(lng))
-        ret += (20.0 * sin(6.0 * lng * PI) + 20.0 * sin(2.0 * lng * PI)) * 2.0 / 3.0
-        ret += (20.0 * sin(lat * PI) + 40.0 * sin(lat / 3.0 * PI)) * 2.0 / 3.0
-        ret += (160.0 * sin(lat / 12.0 * PI) + 320 * sin(lat * PI / 30.0)) * 2.0 / 3.0
+    private fun transformLat(latitude: Double, longitude: Double): Double {
+        var ret = -100.0 + 2.0 * longitude + 3.0 * latitude + 0.2 * latitude * latitude + 0.1 * longitude * latitude + 0.2 * sqrt(abs(longitude))
+        ret += (20.0 * sin(6.0 * longitude * PI) + 20.0 * sin(2.0 * longitude * PI)) * 2.0 / 3.0
+        ret += (20.0 * sin(latitude * PI) + 40.0 * sin(latitude / 3.0 * PI)) * 2.0 / 3.0
+        ret += (160.0 * sin(latitude / 12.0 * PI) + 320 * sin(latitude * PI / 30.0)) * 2.0 / 3.0
         return ret
     }
 
     /**
      * 转换坐标经度
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      *
      */
     @JvmStatic
-    private fun transformLng(lat: Double, lng: Double): Double {
-        var ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + 0.1 * lng * lat + 0.1 * sqrt(abs(lng))
-        ret += (20.0 * sin(6.0 * lng * PI) + 20.0 * sin(2.0 * lng * PI)) * 2.0 / 3.0
-        ret += (20.0 * sin(lng * PI) + 40.0 * sin(lng / 3.0 * PI)) * 2.0 / 3.0
-        ret += (150.0 * sin(lng / 12.0 * PI) + 300.0 * sin(lng / 30.0 * PI)) * 2.0 / 3.0
+    private fun transformLng(latitude: Double, longitude: Double): Double {
+        var ret = 300.0 + longitude + 2.0 * latitude + 0.1 * longitude * longitude + 0.1 * longitude * latitude + 0.1 * sqrt(abs(longitude))
+        ret += (20.0 * sin(6.0 * longitude * PI) + 20.0 * sin(2.0 * longitude * PI)) * 2.0 / 3.0
+        ret += (20.0 * sin(longitude * PI) + 40.0 * sin(longitude / 3.0 * PI)) * 2.0 / 3.0
+        ret += (150.0 * sin(longitude / 12.0 * PI) + 300.0 * sin(longitude / 30.0 * PI)) * 2.0 / 3.0
         return ret
     }
 
     /**
      * 判断是否在国内，不在国内则不做偏移
-     * @param lat 纬度
-     * @param lng 经度
+     * @param latitude 纬度
+     * @param longitude 经度
      * @return
      */
     @JvmStatic
-    private fun outOfChina(lat: Double, lng: Double): Boolean {
-        return (lng < 72.004 || lng > 137.8347) || (lat < 0.8293 || lat > 55.8271)
+    private fun outOfChina(latitude: Double, longitude: Double): Boolean {
+        return (longitude < 72.004 || longitude > 137.8347) || (latitude < 0.8293 || latitude > 55.8271)
     }
 
     //---------------------------------------------

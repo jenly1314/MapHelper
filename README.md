@@ -12,9 +12,9 @@
 MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地图、谷歌地图等相关路线规划和导航的地图帮助类库。
 
 ## 功能介绍
-- [x] 简单易用，一句代码实现
-- [x] 地图路线规划/导航
-- [x] **GCJ-02** / **WGS-84** / **BD09LL** 等相关坐标系互转
+- ✅ 简单易用，一句代码实现
+- ✅ 地图路线规划/导航
+- ✅ **GCJ-02** / **WGS-84** / **BD09LL** 等相关坐标系互转
 
 ## Gif 展示
 ![Image](GIF.gif)
@@ -63,6 +63,10 @@ MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地�
     //...
 ```
 更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jenly1314.github.io/MapHelper/api/)
+
+## 相关推荐
+
+#### [Location](https://github.com/jenly1314/Location) 一个通过 Android 自带的 LocationManager 来实现的定位功能。
 
 <!-- end -->
 

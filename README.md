@@ -4,9 +4,7 @@
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/MapHelper/master/app/release/app-release.apk)
 [![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314/maphelper)](https://repo1.maven.org/maven2/com/github/jenly1314/maphelper/)
-[![JCenter](https://img.shields.io/badge/JCenter-1.0.0-46C018.svg)](https://bintray.com/beta/#/jenly/maven/maphelper)
 [![JitPack](https://jitpack.io/v/jenly1314/MapHelper.svg)](https://jitpack.io/#jenly1314/MapHelper)
-[![CI](https://travis-ci.org/jenly1314/MapHelper.svg?branch=master)](https://travis-ci.org/jenly1314/MapHelper)
 [![CircleCI](https://circleci.com/gh/jenly1314/MapHelper.svg?style=svg)](https://circleci.com/gh/jenly1314/MapHelper)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
@@ -64,18 +62,16 @@ MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地�
     MapHelper.gcj02ToWGS84(latitude,longitude)
     //...
 ```
-更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/MapHelper/latest/javadoc/)
+更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jenly1314.github.io/MapHelper/api/)
 
-## 版本记录
+<!-- end -->
+
+## 版本日志
 
 #### v1.2.0：2023-7-26
 *  适配Android 11 (R) 软件包的可见性
 
-#### v1.1.0：2023-3-26
-*  迁移发布至 Maven Central
-
-#### v1.0.0：2020-5-3
-*  MapHelper初始版本
+#### [查看更多版本日志](CHANGELOG.md)
 
 ## 赞赏
 如果您喜欢MapHelper，或感觉MapHelper帮助到了您，可以点右上角“Star”支持一下，您的支持就是我的动力，谢谢 :smiley:

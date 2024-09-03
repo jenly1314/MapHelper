@@ -66,7 +66,7 @@ MapHelper for Android 是一个整合了高德地图、百度地图、腾讯地�
 
 ## 相关推荐
 
-#### [Location](https://github.com/jenly1314/Location) 一个通过 Android 自带的 LocationManager 来实现的定位功能。
+- [Location](https://github.com/jenly1314/Location) 一个通过 Android 自带的 LocationManager 来实现的定位功能。
 
 <!-- end -->
 
